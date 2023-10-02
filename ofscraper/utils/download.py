@@ -577,6 +577,9 @@ async def alt_download_downloader(item,c,ele,path,progress):
                 size_checker(temp,ele,total) 
                 await asyncio.get_event_loop().run_in_executor(cache_thread,partial( cache.touch,f"{item['name']}_headers",1))
             return item           
+        
+        
+        
         except Exception as E:
             log.traceback(traceback.format_exc())
             log.traceback(E)   

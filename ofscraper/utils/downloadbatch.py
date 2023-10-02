@@ -559,6 +559,9 @@ async def main_download_downloader(c,ele,path,username,model_id):
                                         "total":total,"visible":False})
                             await pipe_.coro_send({"type":"update","args":(ele.id,),"completed":resume_size,"visible":True})                        
                             
+                            log.debug(f" Number of open Files across all processes-> {len(system.getOpenFiles(unique=False))}")   
+                            log.debug(f" Number of unique open files across all processes-> {len(system.getOpenFiles())}")   
+                            log.debug(f"Unique files data across all process -> {list(map(lambda x:(x.path,x.fd),(system.getOpenFiles())))}" )
                             async with aiofiles.open(temp, 'ab') as f:                             
                                 async for chunk in r.iter_chunked(constants.maxChunkSizeB):
                                     count=count+1
@@ -744,7 +747,10 @@ async def alt_download_downloader(item,c,ele,path):
                                     "total":total,"visible":False})
                         await pipe_.coro_send({"type":"update","args":(ele.id,),"completed":resume_size,"visible":True})     
                         count=0
-                        
+                        log.debug(f" Number of open Files across all processes-> {len(system.getOpenFiles(unique=False))}")   
+                        log.debug(f" Number of unique open files across all processes-> {len(system.getOpenFiles())}")   
+                        log.debug(f"Unique files data across all process -> {list(map(lambda x:(x.path,x.fd),(system.getOpenFiles())))}" )
+                    
                         async with aiofiles.open(temp, 'ab') as f:                                              
                             async for chunk in l.iter_chunked(constants.maxChunkSizeB):
                                 count=count+1
