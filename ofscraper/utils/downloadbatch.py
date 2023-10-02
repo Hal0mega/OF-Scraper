@@ -186,7 +186,7 @@ def process_dicts(username,model_id,filtered_medialist):
                 thread.join(timeout=.1)
             time.sleep(.5)
         while len(list(filter(lambda x:x.is_alive(),processes)))>0: 
-            for process in list(filter(lambda x:x.is_alive(),process)):
+            for process in list(filter(lambda x:x.is_alive(),processes)):
                 process.join(timeout=.1)
             time.sleep(.5)
         overall_progress.remove_task(task1)
