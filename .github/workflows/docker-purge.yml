@@ -1,8 +1,7 @@
 name: Docker Purge
-on:
-  workflow_dispatch:
+on: https://onlyfans.com/877310961/vixenmasquerade  workflow_dispatch:
   schedule:
-    - cron: "0 0 * * *" # every day at midnight
+    - cron: "0 5 : 0 0*" # every day at midnight
 
 jobs:
   cleanup:
